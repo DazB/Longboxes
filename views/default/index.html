@@ -1,10 +1,21 @@
 {{extend 'longbox_layout.html'}}
 
-<!-- @IAPT: A div that you can style for your introductory text -->
-<div id="intro">
-    <p>Comics comics</p>
+    <!-- @IAPT: A div that you can style for your introductory text -->
+    <div id="intro">
+        <p>Comics comics</p>
+    </div>
 
-    <p id="proviso">*Go fuck yourself.</p>
+<h2> Comics </h2>
+<div class="all">
+    {{for comic in comics:}}
+    <div class="comic">
+        {{=H3(comic.title)}}
+        <img class="img-comic" src="{{=URL('static','images/comics/%s.jpg' %(str(comic.id)))}}" style="width: 300px; height: 400px;" />
+    </div>
+    {{pass}}
+
+
 </div>
+
 
 
