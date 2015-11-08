@@ -1,0 +1,54 @@
+/* This section resets all elements; in this case all boxes will
+ * now be set to be the size specified, regardless of border or
+ * padding being provided.  It makes layout of comparable boxes
+ * with different types of formatting easier. */
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0 auto;
+    color: white;
+    background: black;
+   	max-width: 900px;
+}
+/* Input text field text colour */
+input[type="text"], textarea {
+  color : black;
+}
+input[type="password"], textarea {
+  color : black;
+}
+/* Drop down box background colour*/
+option {
+    color: black;
+}
+
+.nav {
+  float: left;
+}
+
+#side{
+    max-size: 29%;
+    float: right;
+    border: .1em dashed #808080;
+    padding: .5em;
+    max-height: 100%;
+    min-height: 100%;
+    overflow: scroll;
+}
+
+/* Here I change the position, colour and visual emphasis of the text.  It inherits the size from the previous h2
+ * specification previously in the file.
+ */
+
+#side{
+    max-width: 18%
+}
+
+.clear{
+    clear: both;
+}

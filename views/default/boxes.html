@@ -1,0 +1,23 @@
+{{extend 'longbox_layout.html'}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Boxes</title>
+</head>
+<body>
+    <!-- @IAPT: Extra div element id with main could be replaced by HTML5 extension spec <main> -->
+    <div id="main">
+        <h3>Boxes</h3>
+
+        <!--@IAPT: Semantic element nav helps SEO identify key options on the page -->
+        <nav>
+            <!-- @IAPT: A basic navigation list which is modified by CSS to be horizontal - note the use of the class .navlist -->
+             <ul class="navlist">
+            <!-- @IAPT: Note that local files like this will lead to the same application and same controller as the current page -->
+            <a href="{{=URL('default','addbox.html')}}">Add Box</a>
+        </ul>
+        </nav>
+    </div>
+</body>
+</html>

@@ -21,6 +21,21 @@ def index():
 
     return dict(comics=db(db.comics.id > 0).select())
 
+def boxes():
+    return dict()
+
+def addbox():
+    addform =SQLFORM(db.boxes, fields=['name','privacy_settings'])
+    if addform.process().accepted:
+        response.flash = 'Box Added'
+
+    elif addform.errors:
+        response.flash = 'You fucked up'
+    else:
+        response.flash = 'Please fill the form'
+    return dict(addform=addform)
+
+
 def user():
     """
     exposes:
@@ -37,9 +52,16 @@ def user():
         @auth.requires_permission('read','table name',record_id)
     to decorate functions that need access control
     """
-    return dict(form=auth())
+    #return dict(form=auth())
 
+    loginform = FORM(DIV(LABEL('User name:', _for='user_name')),
+                     DIV(INPUT(_name='user_name', requires=IS_NOT_EMPTY())),
+                     DIV(LABEL('Password:', _for='password')),
+                     DIV(INPUT(_name='password', _type='password', requires=IS_NOT_EMPTY())),
+                     BR(),
+                     DIV(INPUT(_type='submit', _value='Log in')))
 
+    return dict(loginform=loginform, form=auth())
 @cache.action()
 def download():
     """

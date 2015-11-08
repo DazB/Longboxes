@@ -11,12 +11,12 @@
     <meta name="description" content="Longboxes: for the love of comics ">
 
         <!-- include stylesheets -->
-    <link rel="stylesheet" href="{{=URL('static','css/iapt.css')}}"/>
     {{include 'web2py_ajax.html'}} <!-- this includes jquery.js, calendar.js/.css and web2py.js -->
         <!-- include stylesheets -->
     <link rel="stylesheet" href="{{=URL('static','css/bootstrap.min.css')}}"/>
     <link rel="stylesheet" href="{{=URL('static','css/bootstrap-theme.min.css')}}"/>
     <link rel="stylesheet" href="{{=URL('static','css/web2py-bootstrap3.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{=URL('static','css/longboxes.css')}}" media="screen" />
 
 </head>
 <body>
@@ -31,9 +31,12 @@
         <!-- @IAPT: A basic navigation list which is modified by CSS to be horizontal - note the use of the class .navlist -->
         <ul class="navlist">
             <!-- @IAPT: Note that local files like this will lead to the same application and same controller as the current page -->
-            <li><a href="{{=URL('default','index.html')}}">Home</a></li>
+            <a href="{{=URL('default','index.html')}}">Home</a>
+            <a href="{{=URL('default','boxes.html')}}">Boxes</a>
+            <a href="{{=URL('default','user.html')}}">User</a>
         </ul>
     </nav>
+
 
     <!-- @IAPT: This is where the body of your page will be included -->
     {{include}}
