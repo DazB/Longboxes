@@ -13,8 +13,10 @@
         if not 'request_reset_password' in auth.settings.actions_disabled:
             form.add_button(T('Lost Password'),URL(args='request_reset_password'),_class='btn btn-default')
         pass
+        =form
     pass
-    =loginform
+    if request.args(0)=='register':
+        =registerform
     }}
 
 </div>

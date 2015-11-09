@@ -55,13 +55,33 @@ def user():
     #return dict(form=auth())
 
     loginform = FORM(DIV(LABEL('User name:', _for='user_name')),
-                     DIV(INPUT(_name='user_name', requires=IS_NOT_EMPTY())),
+                     DIV(INPUT(_name='user_name', requires=IS_NOT_EMPTY(error_message='Please enter user name') )),
                      DIV(LABEL('Password:', _for='password')),
-                     DIV(INPUT(_name='password', _type='password', requires=IS_NOT_EMPTY())),
+                     DIV(INPUT(_name='password', _type='password', requires=IS_NOT_EMPTY(error_message='Please enter password') )),
                      BR(),
                      DIV(INPUT(_type='submit', _value='Log in')))
 
-    return dict(loginform=loginform, form=auth())
+    registerform = FORM(DIV(LABEL('User name:', _for='user_name')),
+                     DIV(INPUT(_name='user_name', requires=IS_NOT_EMPTY(error_message='Please enter user name')) ),
+                     DIV(LABEL('Screen name:', _for='screen_name')),
+                     DIV(INPUT(_name='screen_name', requires=IS_NOT_EMPTY(error_message='Please enter screen name') )),
+                     DIV(LABEL('Password:', _for='password')),
+                     DIV(INPUT(_name='password', _type='password', requires=IS_NOT_EMPTY(error_message='Please enter password') )),
+                     DIV(LABEL('Re-enter Password:', _for='re_password')),
+                     DIV(INPUT(_name='re_password', _type='password', requires=[IS_NOT_EMPTY(error_message='Please enter password'),
+                               IS_EQUAL_TO(request.vars.password,error_message='Passwords do not match')])),
+                     BR(),
+                     DIV(INPUT(_type='submit', _value='Register')))
+
+    if registerform.accepts(request,session):
+        response.flash = 'Product Added'
+
+
+    elif registerform.errors:
+        response.flash = 'Please fix your fuck ups'
+
+    return dict(loginform=auth.login(), form=auth(), registerform=registerform)
+
 @cache.action()
 def download():
     """
