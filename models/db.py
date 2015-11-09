@@ -60,6 +60,9 @@ auth.settings.registration_requires_verification = False
 auth.settings.registration_requires_approval = False
 auth.settings.reset_password_requires_verification = True
 
+## login after registration and redirect to home page
+auth.settings.login_after_registration = True
+auth.settings.login_next = URL('default','index.html')
 
 #########################################################################
 ## Define your tables below (or better in another model file) for example

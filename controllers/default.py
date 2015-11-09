@@ -52,7 +52,6 @@ def user():
         @auth.requires_permission('read','table name',record_id)
     to decorate functions that need access control
     """
-    #return dict(form=auth())
 
     loginform = FORM(DIV(LABEL('User name:', _for='user_name')),
                      DIV(INPUT(_name='user_name', requires=IS_NOT_EMPTY(error_message='Please enter user name') )),
@@ -61,10 +60,12 @@ def user():
                      BR(),
                      DIV(INPUT(_type='submit', _value='Log in')))
 
-    registerform = FORM(DIV(LABEL('User name:', _for='user_name')),
-                     DIV(INPUT(_name='user_name', requires=IS_NOT_EMPTY(error_message='Please enter user name')) ),
+    registerform = FORM(DIV(LABEL('User name:', _for='username')),
+                     DIV(INPUT(_name='username', requires=[IS_NOT_EMPTY(error_message='Please enter user name'),
+                               IS_NOT_IN_DB(db, custom_auth_table.username, error_message='User name exists. Please choose another')])),
                      DIV(LABEL('Screen name:', _for='screen_name')),
-                     DIV(INPUT(_name='screen_name', requires=IS_NOT_EMPTY(error_message='Please enter screen name') )),
+                     DIV(INPUT(_name='screen_name', requires=[IS_NOT_EMPTY(error_message='Please enter screen name'),
+                               IS_NOT_IN_DB(db, custom_auth_table.username, error_message='Screen name exists. Please choose another')])),
                      DIV(LABEL('Password:', _for='password')),
                      DIV(INPUT(_name='password', _type='password', requires=IS_NOT_EMPTY(error_message='Please enter password') )),
                      DIV(LABEL('Re-enter Password:', _for='re_password')),
@@ -73,12 +74,19 @@ def user():
                      BR(),
                      DIV(INPUT(_type='submit', _value='Register')))
 
+    ## Register accepts, add to user_auth database
     if registerform.accepts(request,session):
-        response.flash = 'Product Added'
-
+        response.flash = 'User Added'
+        username = request.vars.username
+        screen_name = request.vars.screen_name
+        password = request.vars.password
+        db.auth_user.insert(username=username, screen_name=screen_name,password=password)
+        #auth.get_or_create_user(dict(username=username, screen_name=screen_name, password=password),login=True)
+        auth.login_bare(username,password)
+        redirect(URL('default','index.html'))
 
     elif registerform.errors:
-        response.flash = 'Please fix your fuck ups'
+        response.flash = 'Errors. See below for more details'
 
     return dict(loginform=auth.login(), form=auth(), registerform=registerform)
 

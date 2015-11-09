@@ -22,9 +22,18 @@ input[type="text"], textarea {
 input[type="password"], textarea {
   color : black;
 }
-/* Drop down box background colour*/
+
+/* Drop down box text colour*/
 option {
     color: black;
+}
+select {
+    color: black;
+}
+
+/* response.flash colour */
+div.flash {
+    color: white;
 }
 
 .nav {
