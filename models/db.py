@@ -24,7 +24,7 @@ db.define_table(
     auth.settings.table_user_name,
     Field('username', length=128, default=''),
     Field('screen_name', length=128, default=''),
-    Field('email', length=128, default=''), # required
+   # Field('email', length=128, default=''), # required
     Field('password', 'password', length=512,            # required
           readable=False, label='Password'),
     Field('registration_key', length=512,                # required

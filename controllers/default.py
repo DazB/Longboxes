@@ -88,7 +88,14 @@ def user():
     elif registerform.errors:
         response.flash = 'Errors. See below for more details'
 
-    return dict(loginform=auth.login(), form=auth(), registerform=registerform)
+    r =SQLFORM(db.auth_user, fields=['username','screen_name','password'])
+    if r.accepts(request,session):
+        username = request.vars.username
+        screen_name = request.vars.screen_name
+        password = request.vars.password
+        db.auth_user.insert(username=username, screen_name=screen_name,password=password)
+
+    return dict(loginform=auth.login(), form=auth(), registerform=registerform, r=r)
 
 @cache.action()
 def download():

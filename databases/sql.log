@@ -1,30 +1,29 @@
-timestamp: 2015-11-09T22:49:03.421000
+timestamp: 2015-11-10T14:04:47.974000
 CREATE TABLE auth_user(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username CHAR(128),
     screen_name CHAR(128),
-    email CHAR(128),
     password CHAR(512),
     registration_key CHAR(512),
     reset_password_key CHAR(512),
     registration_id CHAR(512)
 );
 success!
-timestamp: 2015-11-09T22:49:03.521000
+timestamp: 2015-11-10T14:04:48.094000
 CREATE TABLE auth_group(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     role CHAR(512),
     description TEXT
 );
 success!
-timestamp: 2015-11-09T22:49:03.661000
+timestamp: 2015-11-10T14:04:48.260000
 CREATE TABLE auth_membership(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
     group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  
 );
 success!
-timestamp: 2015-11-09T22:49:03.796000
+timestamp: 2015-11-10T14:04:48.412000
 CREATE TABLE auth_permission(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  ,
@@ -33,7 +32,7 @@ CREATE TABLE auth_permission(
     record_id INTEGER
 );
 success!
-timestamp: 2015-11-09T22:49:03.938000
+timestamp: 2015-11-10T14:04:48.560000
 CREATE TABLE auth_event(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     time_stamp TIMESTAMP,
@@ -43,7 +42,7 @@ CREATE TABLE auth_event(
     description TEXT
 );
 success!
-timestamp: 2015-11-09T22:49:04.110000
+timestamp: 2015-11-10T14:04:48.694000
 CREATE TABLE auth_cas(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
@@ -53,7 +52,7 @@ CREATE TABLE auth_cas(
     renew CHAR(1)
 );
 success!
-timestamp: 2015-11-09T22:49:04.230000
+timestamp: 2015-11-10T14:04:48.844000
 CREATE TABLE comics(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     cover_image CHAR(512),
@@ -65,7 +64,7 @@ CREATE TABLE comics(
     artist CHAR(512)
 );
 success!
-timestamp: 2015-11-09T22:49:04.370000
+timestamp: 2015-11-10T14:04:48.968000
 CREATE TABLE users(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_name CHAR(512),
@@ -73,7 +72,7 @@ CREATE TABLE users(
     password CHAR(512)
 );
 success!
-timestamp: 2015-11-09T22:49:04.518000
+timestamp: 2015-11-10T14:04:49.110000
 CREATE TABLE boxes(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name CHAR(512),
@@ -82,7 +81,7 @@ CREATE TABLE boxes(
     privacy_settings CHAR(512)
 );
 success!
-timestamp: 2015-11-09T22:49:04.646000
+timestamp: 2015-11-10T14:04:49.252000
 CREATE TABLE comics_in_boxes(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     comic_id INTEGER REFERENCES comics (id) ON DELETE CASCADE  ,
