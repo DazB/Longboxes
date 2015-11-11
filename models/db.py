@@ -24,7 +24,6 @@ db.define_table(
     auth.settings.table_user_name,
     Field('username', length=128, default=''),
     Field('screen_name', length=128, default=''),
-   # Field('email', length=128, default=''), # required
     Field('password', 'password', length=512,            # required
           readable=False, label='Password'),
     Field('registration_key', length=512,                # required
@@ -33,6 +32,7 @@ db.define_table(
           writable=False, readable=False, default=''),
     Field('registration_id', length=512,                 # required
           writable=False, readable=False, default=''))
+   # Field('email', length=128, default=''), # required
 
 ## validators
 custom_auth_table = db[auth.settings.table_user_name] # get the custom_auth_table
@@ -111,7 +111,7 @@ db.define_table('boxes',
                        Field('name'),
                        Field('user_id', db.users),
                        Field('date_created'),
-                       Field('privacy_settings', requires=IS_IN_SET(['Public', 'Private'])))
+                       Field('privacy_settings', requires=IS_IN_SET(['Public', 'Private'], error_message="Please select setting")))
                        #Field('box_id'),
 
 # Comics in Boxes Table: stores relation between comics and the boxes they are contained in

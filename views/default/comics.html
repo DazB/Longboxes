@@ -1,0 +1,21 @@
+{{extend 'longbox_layout.html'}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comics</title>
+</head>
+<body>
+    <!-- @IAPT: Extra div element id with main could be replaced by HTML5 extension spec <main> -->
+    <div id="main">
+        <h3>Comics</h3>
+    </div>
+
+    {{for comic in comics:}}
+    <div class="comics">
+        {{=H3(A(comic.title, callback=URL('default', 'comics', args=[comic.id])))}}
+        {{A(IMG(_src=URL('static','images/comics/%s.jpg' % (str(comic.id)))),_href=URL('default', 'comics/%s' % (str(comic.id))))}}
+    </div>
+    {{pass}}
+</body>
+</html>
