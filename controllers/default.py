@@ -16,42 +16,48 @@ def index():
     if you need a simple wiki simply replace the two lines below with:
     return auth.wiki()
     """
-    #response.flash = T("Hello World")
-    #return dict(message=T('Welcome to web2py!'))
+    # response.flash = T("Hello World")
+    # return dict(message=T('Welcome to web2py!'))
 
     return dict(comics=db(db.comics.id > 0).select())
 
+
 def boxes():
-    return dict(boxes=db(db.boxes.id>0).select())
+    return dict(boxes=db(db.boxes.id > 0).select())
+
 
 def comics():
     comic_id = request.args(0)
     if comic_id is not None:
-        return dict(comics = db(db.comics.id == comic_id).select())
+        return dict(comics=db(db.comics.id == comic_id).select())
     else:
-        return dict(comics = db(db.comics.id>0).select())
+        return dict(comics=db(db.comics.id > 0).select())
+
 
 def addbox():
-    addform =SQLFORM(db.boxes, fields=['name','privacy_settings'])
+    addform = SQLFORM(db.boxes, fields=['name', 'privacy_settings'])
     if addform.process().accepted:
         response.flash = 'Box Added'
 
     elif addform.errors:
-        response.flash = 'You fucked up'
+        response.flash = 'Errors. See below for details'
     else:
         response.flash = 'Please fill the form'
     return dict(addform=addform)
 
+
 def addcomic():
-    addform =SQLFORM(db.comics)
+    addform = SQLFORM(db.comics)
     if addform.process().accepted:
         response.flash = 'Comic Added'
 
     elif addform.errors:
-        response.flash = 'You fucked up'
+        response.flash = 'Errors. See below for details'
     else:
         response.flash = 'Please fill the form'
     return dict(addform=addform)
+
+
 def user():
     """
     exposes:
@@ -69,76 +75,7 @@ def user():
     to decorate functions that need access control
     """
 
-    loginform = SQLFORM(db.auth_user,  fields=['username', 'password'],
-                        buttons=[TAG.button('Login',_type="submit"),
-                                 TAG.button('New User',_type="button",_onClick = "parent.location='%s' " % URL('default/user','register'))])
-    if loginform.validate():
-        username = request.vars.username
-        password = request.vars.password
-        auth.login_bare(username,password)
-        redirect(URL('default','index.html'))
-
-    elif loginform.errors:
-        response.flash = 'Errors. See below for more details'
-
-    registerform = SQLFORM(db.auth_user, fields=['username','screen_name','password'])
-    if registerform.validate():
-        username = request.vars.username
-        password = request.vars.password
-        #db.auth_user.insert(username=username,screen_name=request.vars.screen_name, password=password)
-        auth.login_bare(username,password)
-        redirect(URL('default','index.html'))
-    elif registerform.errors:
-        response.flash = 'Errors. See below for more details'
-
-    return dict(auth=auth(), loginform=loginform, registerform=registerform)
-
-    # loginform = FORM(DIV(LABEL('User name:', _for='user_name')),
-    #                  DIV(INPUT(_name='user_name', requires=IS_NOT_EMPTY(error_message='Please enter user name') )),
-    #                  DIV(LABEL('Password:', _for='password')),
-    #                  DIV(INPUT(_name='password', _type='password', requires=IS_NOT_EMPTY(error_message='Please enter password') )),
-    #                  BR(),
-    #                  DIV(INPUT(_type='submit', _value='Log in')))
-    #
-    # registerform = FORM(DIV(LABEL('User name:', _for='username')),
-    #                  DIV(INPUT(_name='username', requires=[IS_NOT_EMPTY(error_message='Please enter user name'),
-    #                            IS_NOT_IN_DB(db, custom_auth_table.username, error_message='User name exists. Please choose another')])),
-    #                  DIV(LABEL('Screen name:', _for='screen_name')),
-    #                  DIV(INPUT(_name='screen_name', requires=[IS_NOT_EMPTY(error_message='Please enter screen name'),
-    #                            IS_NOT_IN_DB(db, custom_auth_table.username, error_message='Screen name exists. Please choose another')])),
-    #                  DIV(LABEL('Password:', _for='password')),
-    #                  DIV(INPUT(_name='password', _type='password', requires=IS_NOT_EMPTY(error_message='Please enter password') )),
-    #                  DIV(LABEL('Re-enter Password:', _for='re_password')),
-    #                  DIV(INPUT(_name='re_password', _type='password', requires=[IS_NOT_EMPTY(error_message='Please enter password'),
-    #                            IS_EQUAL_TO(request.vars.password,error_message='Passwords do not match')])),
-    #                  BR(),
-    #                  DIV(INPUT(_type='submit', _value='Register')))
-    #
-    # ## Register accepts, add to user_auth database
-    # if registerform.accepts(request,session):
-    #     response.flash = 'User Added'
-    #     username = request.vars.username
-    #     screen_name = request.vars.screen_name
-    #     password = request.vars.password
-    #     db.auth_user.insert(username=username, screen_name=screen_name,password=password)
-    #     #auth.get_or_create_user(dict(username=username, screen_name=screen_name, password=password),login=True)
-    #     auth.login_bare(username,password)
-    #     redirect(URL('default','index.html'))
-    #
-    # elif registerform.errors:
-    #     response.flash = 'Errors. See below for more details'
-    #
-    # registerform =SQLFORM(db.auth_user, fields=['username','screen_name','password'])
-    # if registerform.accepts(request,session):
-    #     username = request.vars.username
-    #     screen_name = request.vars.screen_name
-    #     password = request.vars.password
-    #     db.auth_user.insert(username=username, screen_name=screen_name,password=password)
-    # elif registerform.errors:
-    #     response.flash = 'Errors. See below for more details'
-    #
-    # return dict(loginform=auth.login(), form=auth(), registerform=registerform,)
-
+    return dict(form=auth())
 
 
 @cache.action()
@@ -158,5 +95,3 @@ def call():
     supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv
     """
     return service()
-
-

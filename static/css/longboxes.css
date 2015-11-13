@@ -36,20 +36,6 @@ div.flash {
     color: white;
 }
 
-.nav {
-  float: left;
-}
-
-#side{
-    max-size: 29%;
-    float: right;
-    border: .1em dashed #808080;
-    padding: .5em;
-    max-height: 100%;
-    min-height: 100%;
-    overflow: scroll;
-}
-
 /* Here I change the position, colour and visual emphasis of the text.  It inherits the size from the previous h2
  * specification previously in the file.
  */
