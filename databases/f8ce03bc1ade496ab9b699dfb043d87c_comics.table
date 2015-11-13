@@ -101,10 +101,11 @@ p26
 sg9
 I00
 sg10
-g11
-ssS'artist'
+S'upload'
 p27
-(dp28
+ssS'artist'
+p28
+(dp29
 g4
 I512
 sg5
@@ -113,14 +114,14 @@ sg6
 I8
 sg7
 S'CHAR(512)'
-p29
+p30
 sg9
 I00
 sg10
 g11
 ssS'id'
-p30
-(dp31
+p31
+(dp32
 g4
 I512
 sg5
@@ -129,9 +130,9 @@ sg6
 I1
 sg7
 S'INTEGER PRIMARY KEY AUTOINCREMENT'
-p32
+p33
 sg9
 I00
 sg10
-g30
+g31
 ss.

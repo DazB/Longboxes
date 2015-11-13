@@ -42,7 +42,16 @@ def addbox():
         response.flash = 'Please fill the form'
     return dict(addform=addform)
 
+def addcomic():
+    addform =SQLFORM(db.comics)
+    if addform.process().accepted:
+        response.flash = 'Comic Added'
 
+    elif addform.errors:
+        response.flash = 'You fucked up'
+    else:
+        response.flash = 'Please fill the form'
+    return dict(addform=addform)
 def user():
     """
     exposes:

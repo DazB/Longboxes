@@ -10,10 +10,17 @@
     <div id="main">
         <h3>Comics</h3>
     </div>
-
+    <!--@IAPT: Semantic element nav helps SEO identify key options on the page -->
+    <nav>
+        <!-- @IAPT: A basic navigation list which is modified by CSS to be horizontal - note the use of the class .navlist -->
+        <ul class="navlist">
+            <!-- @IAPT: Note that local files like this will lead to the same application and same controller as the current page -->
+            <a href="{{=URL('default','addcomic.html')}}">Add Comic</a>
+        </ul>
+    </nav>
     {{for comic in comics:}}
     <div class="comics">
-        {{=H3(A(comic.title, callback=URL('default', 'comics', args=[comic.id])))}}
+        {{=H3(A(comic.title, callback=URL('default', 'comics/%s' % (str(comic.id)))))}}
         {{A(IMG(_src=URL('static','images/comics/%s.jpg' % (str(comic.id)))),_href=URL('default', 'comics/%s' % (str(comic.id))))}}
     </div>
     {{pass}}

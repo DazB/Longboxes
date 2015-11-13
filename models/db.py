@@ -90,7 +90,7 @@ auth.settings.login_next = URL('default','index.html')
 
 # Comic Table: stores details on each comic
 db.define_table('comics',
-                       Field('cover_image'), # , requires=IS_IMAGE Check if uploaded file is in any of supported image formats
+                       Field('cover_image', 'upload'), # , requires=IS_IMAGE Check if uploaded file is in any of supported image formats
                        Field('title', requires=IS_NOT_EMPTY()),
                        Field('issue_number', requires=IS_NOT_EMPTY()),
                        Field('description', requires=IS_NOT_EMPTY(), widget=SQLFORM.widgets.text.widget),
