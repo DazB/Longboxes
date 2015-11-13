@@ -24,13 +24,13 @@
 <div id="main">
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
+
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="{{=URL('default','index.html')}}">Longboxes</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false"> Boxes </a>
@@ -45,8 +45,28 @@
                             <li><a href="{{=URL('default','addcomic.html')}}">Add Comics</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{=URL('default','user.html')}}">User</a></li>
+
                 </ul>
+                <div class="nav navbar-nav pull-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false"> User </a>
+                        {{if auth.user:}}
+                        <ul class="dropdown-menu">
+                            <li><a href="{{=URL('default/user','logout')}}">Logout</a></li>
+                            <li><a href="{{=URL('default/user','profile')}}">Profile</a></li>
+                            <li><a href="{{=URL('default/user','change_password')}}">Change Password</a></li>
+                        </ul>
+                        {{else:}}
+                        <ul class="dropdown-menu">
+                            <li><a href="{{=URL('default/user','login')}}">Login</a></li>
+                            <li><a href="{{=URL('default/user','register')}}">Register</a></li>
+                        </ul>
+                        {{pass}}
+
+                    </li>
+
+                </div>
             </div><!--/.nav-collapse -->
         </div>
     </nav>
