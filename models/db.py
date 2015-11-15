@@ -105,17 +105,3 @@ db.define_table('comics_in_boxes',
                 Field('comic_id', db.comics),
                 Field('box_id', db.boxes))
 
-# Custom user bar used in navigation bar
-def user_bar():
-    action = '/user'
-    if auth.user:
-        logout=A('logout', _href=action+'/logout')
-        profile=A('profile', _href=action+'/profile')
-        password=A('change password', _href=action+'/change_password')
-        bar = SPAN(auth.user.email, ' | ', profile, ' | ', password, ' | ', logout, _class='auth_navbar')
-    else:
-        login=A('Login', _href=(URL('default/user','login')))
-        register=A('register',_href=action+'/register')
-        lost_password=A('lost password', _href=action+'/request_reset_password')
-        bar = SPAN(' ', login, ' | ', register, ' | ', lost_password, _class='auth_navbar')
-    return bar

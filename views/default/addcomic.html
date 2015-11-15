@@ -2,11 +2,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Add a fuckin comic</title>
 </head>
 
 <body>
-    <div class="flash">{{=response.flash or ''}}</div>
+    <div class="alert alert-success" role="alert">{{=response.flash or ''}}</div>
     <div class="form">
         {{=addform}}
     </div>

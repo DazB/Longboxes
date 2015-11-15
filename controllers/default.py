@@ -22,10 +22,12 @@ def index():
     return dict(comics=db(db.comics.id > 0).select())
 
 
+@auth.requires_login()  # Requires user to be logged in
 def boxes():
     return dict(boxes=db(db.boxes.id > 0).select())
 
 
+@auth.requires_login()  # Requires user to be logged in
 def comics():
     comic_id = request.args(0)
     if comic_id is not None:
@@ -35,7 +37,7 @@ def comics():
 
 
 def addbox():
-    addform = SQLFORM(db.boxes, fields=['name', 'privacy_settings'])
+    addform = SQLFORM(db.boxes, fields=['name', 'privacy_settings'], buttons=[TAG.button('Add Box', _type="submit")])
     if addform.process().accepted:
         response.flash = 'Box Added'
 
@@ -47,7 +49,7 @@ def addbox():
 
 
 def addcomic():
-    addform = SQLFORM(db.comics)
+    addform = SQLFORM(db.comics, buttons=[TAG.button('Add Comic', _type="submit")])
     if addform.process().accepted:
         response.flash = 'Comic Added'
 

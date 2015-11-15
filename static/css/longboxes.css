@@ -11,30 +11,30 @@
 body {
 	font-family: Arial, Helvetica, sans-serif;
 	margin: 0 auto;
-    color: white;
-    background: black;
+    /*color: white;*/
+    /*background: black;*/
    	max-width: 900px;
 }
-/* Input text field text colour */
-input[type="text"], textarea {
-  color : black;
-}
-input[type="password"], textarea {
-  color : black;
-}
+/*!* Input text field text colour *!*/
+/*input[type="text"], textarea {*/
+  /*color : black;*/
+/*}*/
+/*input[type="password"], textarea {*/
+  /*color : black;*/
+/*}*/
 
-/* Drop down box text colour*/
-option {
-    color: black;
-}
-select {
-    color: black;
-}
+/*!* Drop down box text colour*!*/
+/*option {*/
+    /*color: black;*/
+/*}*/
+/*select {*/
+    /*color: black;*/
+/*}*/
 
-/* response.flash colour */
-div.flash {
-    color: white;
-}
+/*!* response.flash colour *!*/
+/*div.flash {*/
+    /*color: white;*/
+/*}*/
 
 /* Here I change the position, colour and visual emphasis of the text.  It inherits the size from the previous h2
  * specification previously in the file.

@@ -1,18 +1,21 @@
 {{extend 'longbox_layout.html'}}
 
-<!-- @IAPT: A div that you can style for your introductory text -->
-<div id="intro">
-    <p>Comics comics</p>
+<h2> Home </h2>
+
+<h3> 5 Largest Public Boxes</h3>
+
+<div class="row">
+    <div class="col-sm-4">
+        <h4>Some shit here</h4>
+    </div>
+
 </div>
 
-<h2> Comics </h2>
-<div class="all">
-{{for comic in comics:}}
-    <div class="comic">
-        {{=H3(comic.title)}}
-        <img class="img-comic" src="{{=URL('download',args=comic.cover_image)}}" ,
-             style="width: 300px; height: 400px;"/>
+<h3> 5 Newest Public Boxes</h3>
+
+<div class="row">
+    <div class="col-sm-4">
+        <h4>Some shit here too</h4>
     </div>
-{{pass}}
 
 </div>
