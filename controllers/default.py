@@ -79,6 +79,13 @@ def user():
 
     return dict(form=auth())
 
+import datetime
+def register():
+    def post_registration(form): # form accepted
+        db.boxes.insert(name="Unfiled", user_id=auth.user.id, date_created=datetime.date.today(), privacy_settings="Public")
+        db.commit
+    auth.settings.register_onaccept = post_registration
+    return dict(form=auth.register())
 
 @cache.action()
 def download():

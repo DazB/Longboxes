@@ -86,16 +86,16 @@ db.define_table('comics',
                 Field('artist', requires=IS_NOT_EMPTY()))
 
 # User Table: stores Longboxes user details
-db.define_table('users',
-                Field('user_name', requires= [IS_NOT_EMPTY(), IS_NOT_IN_DB(db,'auth_user.user_name')]),
-                Field('screen_name', requires=[IS_NOT_EMPTY(), IS_NOT_IN_DB(db,'auth_user.screen_name')]),
-                Field('password', requires=IS_NOT_EMPTY(), widget=SQLFORM.widgets.password.widget))
+# db.define_table('users',
+#                 Field('user_name', requires= [IS_NOT_EMPTY(), IS_NOT_IN_DB(db,'auth_user.user_name')]),
+#                 Field('screen_name', requires=[IS_NOT_EMPTY(), IS_NOT_IN_DB(db,'auth_user.screen_name')]),
+#                 Field('password', requires=IS_NOT_EMPTY(), widget=SQLFORM.widgets.password.widget))
 # db.register.user_name.requires=IS_NOT_IN_DB(db,'users.user_name')
 
 # Comic Boxes Table: stores details about the boxes containing collections of comics
 db.define_table('boxes',
                 Field('name'),
-                Field('user_id', db.users),
+                Field('user_id', db.auth_user),
                 Field('date_created'),
                 Field('privacy_settings',
                       requires=IS_IN_SET(['Public', 'Private'], error_message="Please select setting")))
