@@ -1,0 +1,127 @@
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# =========================
+# Operating System Files
+# =========================
+
+# OSX
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+.idea
+databases
+errors
+sessions
+/ABOUT
+/LICENSE
+/__init__.py
+/__init__.pyc
+/languages/ar.py
+/languages/ca.py
+/languages/cs.py
+/languages/de.py
+/languages/default.py
+/languages/es.py
+/languages/fr-ca.py
+/languages/fr.py
+/languages/hi.py
+/languages/hu.py
+/languages/id.py
+/languages/it.py
+/languages/my-mm.py
+/languages/my.py
+/languages/nl.py
+/languages/pl.py
+/languages/plural-cs.py
+/languages/plural-en.py
+/languages/plural-es.py
+/languages/plural-ru.py
+/languages/plural-uk.py
+/languages/pt-br.py
+/languages/pt.py
+/languages/ro.py
+/languages/ru.py
+/languages/sk.py
+/languages/tr.py
+/languages/uk.py
+/languages/zh-cn.py
+/languages/zh-tw.py
+/languages/zh.py
+/cron/crontab
+/cron/crontab.example
+/controllers/appadmin.py
+/modules/__init__.py
+/modules/__init__.pyc
+/private/appconfig.ini
+/progress.log
+/routes.example.py
+/static/403.html
+/static/404.html
+/static/500.html
+/static/fonts/glyphicons-halflings-regular.eot
+/static/fonts/glyphicons-halflings-regular.svg
+/static/fonts/glyphicons-halflings-regular.ttf
+/static/fonts/glyphicons-halflings-regular.woff
+/static/fonts/glyphicons-halflings-regular.woff2
+/static/images/background.jpg
+/static/images/facebook.png
+/static/images/favicon.ico
+/static/images/favicon.png
+/static/images/gplus-32.png
+/static/images/twitter.png
+/static/js/analytics.min.js
+/static/js/bootstrap.min.js
+/static/js/calendar.js
+/static/js/jquery.js
+/static/js/modernizr-2.8.3.min.js
+/static/js/respond-1.4.2.min.js
+/static/js/share.js
+/static/js/web2py-bootstrap3.js
+/static/js/web2py.js
+/uploads/comics.cover_image.85598f52b63d8612.4368727973616e7468656d756d2e6a7067.jpg
+/uploads/comics.cover_image.a631d8e21a69118b.737461722d776172732d70756c702d66696374696f6e2e6a7067.jpg
+/views/__init__.py
+/views/appadmin.html
+/views/generic.html
+/views/generic.ics
+/views/generic.json
+/views/generic.jsonp
+/views/generic.load
+/views/generic.map
+/views/generic.pdf
+/views/generic.rss
+/views/generic.xml
+/views/web2py_ajax.html

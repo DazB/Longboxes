@@ -1,0 +1,28 @@
+{{extend 'longbox_layout.html'}}
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+<div id="main">
+    <h3>Comics</h3>
+</div>
+
+
+<div class="row">
+
+{{for comic in comics:}}
+    <div class="col-sm-4">
+        <div class="comics">
+        {{=H3(comic.title)}}
+            <img class="img-comic" src="{{=URL('download',args=comic.cover_image)}}" ,
+                 style="width: 300px; height: 400px;"/>
+        </div>
+    </div>
+{{pass}}
+
+</div>
+
+
+</body>
+</html>

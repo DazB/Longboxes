@@ -1,0 +1,19 @@
+{{extend 'longbox_layout.html'}}
+
+<h2> Home </h2>
+
+<h3> 5 Largest Public Boxes</h3>
+
+<div class="row">
+    Some shit here
+</div>
+
+<h3> 5 Newest Public Boxes</h3>
+
+<div class="row">
+    {{for box in newboxes:}}
+        <div class="col-sm-4">
+        {{=H3(A(box.name, _href=URL('default','boxes',args=[box.id])))}}
+        </div>
+    {{pass}}
+</div>
