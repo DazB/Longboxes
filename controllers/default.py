@@ -53,10 +53,20 @@ def addbox():
 
 @auth.requires_login()  # Requires user to be logged in
 def addcomic():
+    # Gets all boxes that logged in user has
     boxes = db((db.boxes.id > 0) & (db.boxes.user_id == auth.user_id)).select()
     addform = SQLFORM(db.comics, buttons=[TAG.button('Add Comic', _type="submit")])
-    list_boxes = TR(LABEL('Box'), INPUT(_name='boxes',value=True,_type='drop-down'))
+
+    list_boxes = LABEL('Box to add comic to:')
     addform[0].insert(-1,list_boxes)
+    list_boxes = LABEL('(if left empty then added to Unfiled box)')
+    addform[0].insert(-1,list_boxes)
+    # Lists checkboxes of all users boxes
+    for box in boxes:
+        if box.name != 'Unfiled':
+            list_boxes = LABEL(box.name), INPUT(_type='checkbox', _name=box.name)
+            addform[0].insert(-1,list_boxes)
+
     if addform.process().accepted:
         response.flash = 'Comic Added'
 
