@@ -64,8 +64,10 @@ def addcomic():
     # Lists checkboxes of all users boxes
     for box in boxes:
         if box.name != 'Unfiled':
-            list_boxes = LABEL(box.name), INPUT(_type='checkbox', _name=box.name)
+            list_boxes = LABEL(box.name), INPUT(_name=box.name, _type='checkbox')
             addform[0].insert(-1,list_boxes)
+
+    addform.validate:
 
     if addform.process().accepted:
         response.flash = 'Comic Added'
