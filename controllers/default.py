@@ -40,19 +40,18 @@ def comics():
     else:
         return dict(comics=db(db.comics.id > 0).select())
 
-
+@auth.requires_login()  # Requires user to be logged in
 def addbox():
     addform = SQLFORM(db.boxes, fields=['name', 'privacy_settings'], buttons=[TAG.button('Add Box', _type="submit")])
     if addform.process().accepted:
         response.flash = 'Box Added'
-
     elif addform.errors:
         response.flash = 'Errors. See below for details'
     else:
         response.flash = 'Please fill the form'
     return dict(addform=addform)
 
-
+@auth.requires_login()  # Requires user to be logged in
 def addcomic():
     boxes = db((db.boxes.id > 0) & (db.boxes.user_id == auth.user_id)).select()
     addform = SQLFORM(db.comics, buttons=[TAG.button('Add Comic', _type="submit")])

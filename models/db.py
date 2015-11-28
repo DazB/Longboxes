@@ -92,11 +92,12 @@ db.define_table('comics',
 #                 Field('password', requires=IS_NOT_EMPTY(), widget=SQLFORM.widgets.password.widget))
 # db.register.user_name.requires=IS_NOT_IN_DB(db,'users.user_name')
 
+import datetime
 # Comic Boxes Table: stores details about the boxes containing collections of comics
 db.define_table('boxes',
                 Field('name'),
-                Field('user_id', db.auth_user),
-                Field('date_created'),
+                Field('user_id', db.auth_user, default=auth.user_id),   # adds logged in user by default
+                Field('date_created', default=datetime.date.today()),   # adds current date by default
                 Field('privacy_settings',
                       requires=IS_IN_SET(['Public', 'Private'], error_message="Please select setting")))
 
